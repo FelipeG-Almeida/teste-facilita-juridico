@@ -1,12 +1,12 @@
 import knex from 'knex';
 
-export class BaseDatabase {
+export default class BaseDatabase {
 	static connection = knex({
 		client: 'pg',
 		connection: {
 			user: 'postgres',
 			host: 'localhost',
-			database: 'BD',
+			database: 'postgres',
 			password: '123',
 			port: 5432,
 		},
