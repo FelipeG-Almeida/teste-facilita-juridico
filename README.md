@@ -68,6 +68,8 @@ O servidor frontend será iniciado na porta padrão `3003` e abrirá automaticam
 
 ## Video Explicativo
 
+https://drive.google.com/file/d/1BIyTyTQlclSKiW3JnC-8z_ROczHfVCfD/view?usp=sharing
 
+Qualquer dúvidas estou a disposição
 
 ---
