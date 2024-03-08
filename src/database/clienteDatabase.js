@@ -17,4 +17,13 @@ export default class ClienteDatabase extends BaseDatabase {
 			.from('clientes');
 		return clientes;
 	}
+
+	async getOrdenedClientes() {
+		const clientes = await this.getClientes();
+		return clientes.sort((a, b) => {
+			return (
+				Math.abs(a.x) + Math.abs(a.y) - (Math.abs(b.x) + Math.abs(b.y))
+			);
+		});
+	}
 }

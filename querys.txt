@@ -1,0 +1,10 @@
+CREATE TABLE clientes (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(255),
+	email VARCHAR(255),
+	telefone VARCHAR(20)
+);
+
+ALTER TABLE clientes
+	ADD COLUMN x INT,
+	ADD COLUMN y INT;

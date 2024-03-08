@@ -11,6 +11,8 @@ export default class ClienteController {
 				nome: req.body.nome,
 				email: req.body.email,
 				telefone: req.body.telefone,
+				x: parseInt(req.body.x),
+				y: parseInt(req.body.y),
 			};
 
 			const output = await this.clienteBD.insertCliente(input);
@@ -24,6 +26,16 @@ export default class ClienteController {
 	getClientes = async (req, res) => {
 		try {
 			const output = await this.clienteBD.getClientes();
+			res.status(200).send(output);
+		} catch (error) {
+			console.log(error);
+			res.status(500).send(error);
+		}
+	};
+
+	getRota = async (req, res) => {
+		try {
+			const output = await this.clienteBD.getOrdenedClientes();
 			res.status(200).send(output);
 		} catch (error) {
 			console.log(error);

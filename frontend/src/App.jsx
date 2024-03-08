@@ -6,6 +6,7 @@ import Modal from './components/modal/Modal';
 function App() {
 	const [clientes, setClientes] = useState([]);
 	const [showModal, setShowModal] = useState(false);
+	const [modalType, setModalType] = useState('');
 
 	async function fetchClientes() {
 		const result = await axios.get('http://localhost:3003/clientes');
@@ -23,12 +24,31 @@ function App() {
 			</header>
 
 			<main>
-				<button onClick={() => setShowModal(true)}>Novo Cliente</button>
+				<button
+					className="botao"
+					onClick={() => {
+						setShowModal(true);
+						setModalType('cadastro');
+					}}
+				>
+					Novo Cliente
+				</button>
+				<button
+					className="botao"
+					onClick={() => {
+						setShowModal(true);
+						setModalType('rotas');
+					}}
+				>
+					Visualizar Rotas
+				</button>
 				<table>
 					<thead>
-							<th>Cliente</th>
-							<th>E-mail</th>
-							<th>Telefone</th>
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th>Telefone</th>
+						<th>Coordenada X</th>
+						<th>Coordenada Y</th>
 					</thead>
 					<tbody>
 						{clientes?.map((cliente) => (
@@ -36,6 +56,8 @@ function App() {
 								<td>{cliente.nome}</td>
 								<td>{cliente.email}</td>
 								<td>{cliente.telefone}</td>
+								<td>{cliente.x}</td>
+								<td>{cliente.y}</td>
 							</tr>
 						))}
 					</tbody>
@@ -45,6 +67,7 @@ function App() {
 			<Modal
 				onClose={() => setShowModal(false)}
 				show={showModal}
+				type={modalType}
 				refresh={fetchClientes}
 			/>
 		</>
